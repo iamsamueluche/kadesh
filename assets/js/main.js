@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initHeader();
   initMobileMenu();
   initActiveNavLink();
+  initHeroMotion();
   initScrollReveal();
   initProjectFilter();
   initProjectCaseStudyModal();
@@ -84,6 +85,76 @@ function initActiveNavLink() {
       link.classList.remove('active');
     }
   });
+}
+
+/**
+ * Hero motion effect
+ * Adds subtle pointer and scroll-driven movement to the homepage hero
+ */
+function initHeroMotion() {
+  const hero = document.querySelector('.hero-interactive');
+  if (!hero) return;
+  if (hero.dataset.motionInitialized === 'true') return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (reducedMotion.matches) return;
+
+  const parallaxItems = hero.querySelectorAll('.hero-parallax-item');
+  let currentX = 0;
+  let currentY = 0;
+  let targetX = 0;
+  let targetY = 0;
+  let animationFrame = null;
+
+  function renderMotion() {
+    currentX += (targetX - currentX) * 0.08;
+    currentY += (targetY - currentY) * 0.08;
+
+    hero.style.setProperty('--hero-pointer-x', currentX.toFixed(2) + 'px');
+    hero.style.setProperty('--hero-pointer-y', currentY.toFixed(2) + 'px');
+
+    parallaxItems.forEach(item => {
+      const depth = Number(item.dataset.depth || 0.12);
+      const x = currentX * depth;
+      const y = currentY * depth;
+      item.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0)`;
+    });
+
+    if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
+      animationFrame = window.requestAnimationFrame(renderMotion);
+    } else {
+      animationFrame = null;
+    }
+  }
+
+  function queueRender() {
+    if (animationFrame !== null) return;
+    animationFrame = window.requestAnimationFrame(renderMotion);
+  }
+
+  hero.addEventListener('pointermove', event => {
+    const rect = hero.getBoundingClientRect();
+    const relativeX = event.clientX - rect.left - rect.width / 2;
+    const relativeY = event.clientY - rect.top - rect.height / 2;
+    targetX = relativeX * 0.08;
+    targetY = relativeY * 0.06;
+    queueRender();
+  });
+
+  hero.addEventListener('pointerleave', () => {
+    targetX = 0;
+    targetY = 0;
+    queueRender();
+  });
+
+  window.addEventListener('scroll', () => {
+    const rect = hero.getBoundingClientRect();
+    const offset = Math.max(-80, Math.min(80, rect.top * -0.08));
+    targetY = offset;
+    queueRender();
+  }, { passive: true });
+
+  hero.dataset.motionInitialized = 'true';
 }
 
 /**

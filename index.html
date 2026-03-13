@@ -33,11 +33,22 @@
 
     <main>
       <!-- Hero Section -->
-      <section class="hero-section bg-gradient-hero">
+      <section class="hero-section hero-interactive bg-gradient-hero">
+        <div class="hero-motion-layer" aria-hidden="true">
+          <span class="hero-orb hero-orb-one"></span>
+          <span class="hero-orb hero-orb-two"></span>
+          <span class="hero-grid"></span>
+          <span class="hero-dot hero-dot-one"></span>
+          <span class="hero-dot hero-dot-two"></span>
+          <span class="hero-dot hero-dot-three"></span>
+          <span class="hero-dot hero-dot-four"></span>
+          <span class="hero-dot hero-dot-five"></span>
+          <span class="hero-dot hero-dot-six"></span>
+        </div>
         <div class="container-custom">
           <div class="row align-items-center g-5">
             <div class="col-lg-6">
-              <div class="hero-content">
+              <div class="hero-content reveal">
                 <span class="badge-pill badge-accent mb-4"
                   >Digital Marketing Agency</span
                 >
@@ -66,26 +77,36 @@
                 <div class="hero-stats">
                   <div class="hero-stat">
                     <div class="number">20+</div>
+                    <div class="label">Brands Served</div>
+                  </div>
+                  <div class="hero-stat">
+                    <div class="number">35+</div>
                     <div class="label">Projects Delivered</div>
                   </div>
                   <div class="hero-stat">
                     <div class="number">98%</div>
                     <div class="label">Client Satisfaction</div>
                   </div>
-                  <div class="hero-stat">
-                    <div class="number">5+</div>
-                    <div class="label">Team Experts</div>
-                  </div>
                 </div>
               </div>
             </div>
             <div class="col-lg-6">
-              <div class="hero-image">
+              <div class="hero-image hero-parallax-item" data-depth="0.18">
+                <div class="hero-floating-card hero-floating-card-top">
+                  <span class="eyebrow">Campaign Reach</span>
+                  <strong>+214%</strong>
+                  <span>Growth across paid and organic channels</span>
+                </div>
                 <img
                   src="assets/img/hero-team.jpg"
                   alt="KA.DESH Digital Team"
                   class="img-fluid"
                 />
+                <div class="hero-floating-card hero-floating-card-bottom">
+                  <span class="eyebrow">Conversion Focus</span>
+                  <strong>Strategy + Content + Ads</strong>
+                  <span>Built to turn visibility into qualified leads.</span>
+                </div>
               </div>
             </div>
           </div>
