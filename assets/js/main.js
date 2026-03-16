@@ -45,6 +45,7 @@ function initMobileMenu() {
 
   toggle.addEventListener('click', function() {
     navMenu.classList.toggle('active');
+    toggle.classList.toggle('active');
     const icon = toggle.querySelector('i');
     if (navMenu.classList.contains('active')) {
       icon.classList.remove('bi-list');
@@ -60,6 +61,7 @@ function initMobileMenu() {
   navLinks.forEach(link => {
     link.addEventListener('click', function() {
       navMenu.classList.remove('active');
+      toggle.classList.remove('active');
       const icon = toggle.querySelector('i');
       icon.classList.remove('bi-x-lg');
       icon.classList.add('bi-list');
@@ -660,11 +662,12 @@ function loadPartials() {
       <a href="about.html" class="nav-link">About Us</a>
       <a href="services.html" class="nav-link">Services</a>
       <a href="projects.html" class="nav-link">Projects</a>
+      <a href="careers.html" class="nav-link">Careers</a>
       <a href="faq.html" class="nav-link">FAQ</a>
       <a href="contact.html" class="nav-link">Contact Us</a>
-      <a href="contact.html" class="btn btn-primary btn-sm d-lg-none">Get a Quote</a>
+      <a href="https://calendly.com/kadeshdigital/30min" class="btn btn-primary btn-sm d-lg-none" target="_blank">Book a Free Discovery Call</a>
     </nav>
-    <a href="contact.html" class="btn btn-primary d-none d-lg-flex">Get a Quote</a>
+    <a href="https://calendly.com/kadeshdigital/30min" class="btn btn-primary d-none d-lg-flex" target="_blank">Book a Free Discovery Call</a>
     <button class="mobile-menu-toggle" aria-label="Toggle menu">
       <i class="bi bi-list"></i>
     </button>
@@ -696,6 +699,7 @@ function loadPartials() {
           <li><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
           <li><a href="services.html"><i class="bi bi-chevron-right"></i> Services</a></li>
           <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Projects</a></li>
+          <li><a href="careers.html"><i class="bi bi-chevron-right"></i> Careers</a></li>
         </ul>
       </div>
       <div class="col-lg-3 col-md-6">
