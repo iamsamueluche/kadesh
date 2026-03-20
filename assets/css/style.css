@@ -1596,6 +1596,11 @@ img {
   margin-right: auto;
 }
 
+.about-hero-title {
+  font-size: clamp(32px, 2.8vw, 38px);
+  max-width: 720px !important;
+}
+
 .hero-centered .hero-subtitle {
   max-width: 600px;
   margin-left: auto;
