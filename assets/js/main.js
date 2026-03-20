@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
   initFAQAccordion();
   initSuccessSlider();
   initSmoothScroll();
+  initTiltCards();
+  initServiceSpotlights();
+  initServiceQuickNav();
 });
 
 /**
@@ -245,15 +248,15 @@ function initProjectCaseStudyModal() {
 
   const caseStudyData = {
     techstyle: {
-      client: 'TechStyle Fashion',
-      name: 'TechStyle Fashion E-Commerce',
-      image: 'assets/img/project-fashion.jpg',
-      imageAlt: 'TechStyle Fashion storefront website preview',
-      tags: ['E-Commerce', 'SEO', 'Web Design'],
-      summary: 'Complete digital transformation including website redesign, SEO optimization, and multi-channel marketing campaigns.',
-      challenge: 'The brand struggled with low organic traffic, high cart abandonment, and limited customer retention despite strong products.',
-      strategy: 'We rebuilt the storefront UX, improved product page SEO, launched performance ad campaigns, and implemented lifecycle email automation to recover abandoned carts.',
-      results: ['300% growth in online sales within 6 months', '58% increase in organic traffic', '34% improvement in conversion rate']
+      client: 'SeamlessVisa',
+      name: 'SeamlessVisa Digital Presence Growth',
+      image: 'assets/img/project-fintech.jpg',
+      imageAlt: 'SeamlessVisa digital marketing campaign preview',
+      tags: ['SEO', 'Social Media', 'Lead Generation'],
+      summary: 'How we helped SeamlessVisa improve their digital presence with SEO and social media.',
+      challenge: 'The brand needed stronger online visibility, more consistent audience growth, and a clearer path from digital attention to qualified inquiries.',
+      strategy: 'We strengthened their search presence, refined their social media positioning, and built a content-led system that improved discoverability, engagement, and inquiry flow.',
+      results: ['150% increase in followers', 'A consistent lead funnel', 'Increased brand recognition within their target market']
     },
     greenlife: {
       client: 'GreenLife Organics',
@@ -500,6 +503,78 @@ function initSmoothScroll() {
 }
 
 /**
+ * Premium tilt interaction for service cards
+ */
+function initTiltCards() {
+  const cards = document.querySelectorAll('.tilt-card');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (cards.length === 0 || prefersReducedMotion.matches) return;
+
+  cards.forEach(card => {
+    card.addEventListener('pointermove', function(event) {
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const rotateY = ((x / rect.width) - 0.5) * 10;
+      const rotateX = ((y / rect.height) - 0.5) * -10;
+      card.style.transform = 'perspective(1200px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg) translateY(-8px)';
+    });
+
+    card.addEventListener('pointerleave', function() {
+      card.style.transform = '';
+    });
+  });
+}
+
+/**
+ * Cursor spotlight animation for premium service cards
+ */
+function initServiceSpotlights() {
+  const cards = document.querySelectorAll('.spotlight-card');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (cards.length === 0 || prefersReducedMotion.matches) return;
+
+  cards.forEach(card => {
+    card.addEventListener('pointermove', function(event) {
+      const rect = card.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+      card.style.setProperty('--spotlight-x', x.toFixed(2) + '%');
+      card.style.setProperty('--spotlight-y', y.toFixed(2) + '%');
+    });
+  });
+}
+
+/**
+ * Highlights the active quick nav item on the services page
+ */
+function initServiceQuickNav() {
+  const quickLinks = document.querySelectorAll('.services-quick-nav a');
+  const sections = document.querySelectorAll('.service-detail-section');
+
+  if (quickLinks.length === 0 || sections.length === 0) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      quickLinks.forEach(link => {
+        const isActive = link.getAttribute('href') === '#' + entry.target.id;
+        link.classList.toggle('active', isActive);
+      });
+    });
+  }, {
+    threshold: 0.45,
+    rootMargin: '-15% 0px -35% 0px'
+  });
+
+  sections.forEach(section => observer.observe(section));
+}
+
+/**
  * Counter animation for stats
  * Animates numbers counting up
  */
@@ -687,7 +762,7 @@ function loadPartials() {
         <p>Setting brands apart for digital excellence through innovative strategies and creative solutions.</p>
         <div class="footer-social">
           <a href="https://www.facebook.com/share/1Gc4a5QkJQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+          <a href="https://www.tiktok.com/@kadeshdigital?_r=1&_t=ZS-94ABuXP2OeY" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
           <a href="https://www.instagram.com/kadeshdigital?igsh=MWRoMDI5OTRxYjN3bg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
           <a href="https://www.linkedin.com/company/kadeshdigital/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
         </div>
@@ -705,21 +780,25 @@ function loadPartials() {
       <div class="col-lg-3 col-md-6">
         <h5>Our Services</h5>
         <ul class="footer-links">
-          <li><a href="services.html"><i class="bi bi-chevron-right"></i> SEO Optimization</a></li>
-          <li><a href="services.html"><i class="bi bi-chevron-right"></i> Social Media Marketing</a></li>
-          <li><a href="services.html"><i class="bi bi-chevron-right"></i> PPC Advertising</a></li>
-          <li><a href="services.html"><i class="bi bi-chevron-right"></i> Brand Strategy</a></li>
-          <li><a href="services.html"><i class="bi bi-chevron-right"></i> Content Marketing</a></li>
-          <li><a href="services.html"><i class="bi bi-chevron-right"></i> Email Marketing</a></li>
+          <li><a href="services.html#service-branding-identity"><i class="bi bi-chevron-right"></i> Branding &amp; Identity Design</a></li>
+          <li><a href="services.html#service-social-media-management"><i class="bi bi-chevron-right"></i> Social Media Management</a></li>
+          <li><a href="services.html#service-content-creation"><i class="bi bi-chevron-right"></i> Content Creation</a></li>
+          <li><a href="services.html#service-video-editing"><i class="bi bi-chevron-right"></i> Video Editing</a></li>
+          <li><a href="services.html#service-digital-strategy-consulting"><i class="bi bi-chevron-right"></i> Digital Strategy &amp; Consulting</a></li>
+          <li><a href="services.html#service-ppc"><i class="bi bi-chevron-right"></i> PPC Advertising</a></li>
+          <li><a href="services.html#service-email-marketing"><i class="bi bi-chevron-right"></i> Email Marketing</a></li>
+          <li><a href="services.html#service-website-development"><i class="bi bi-chevron-right"></i> Website Development</a></li>
+          <li><a href="services.html#service-profile-optimization"><i class="bi bi-chevron-right"></i> Profile Optimization</a></li>
         </ul>
       </div>
       <div class="col-lg-4 col-md-6">
         <h5>Contact Us</h5>
         <div class="footer-contact">
           <p><i class="bi bi-geo-alt-fill"></i><span>Number 9, Irebawa Street, Ogba<br>Lagos, Nigeria</span></p>
-          <p><i class="bi bi-telephone-fill"></i><span>+234 703 271 6640</span></p>
-          <p><i class="bi bi-envelope-fill"></i><span>hello@kadesh.digital</span></p>
-          <p><i class="bi bi-clock-fill"></i><span>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 4:00 PM</span></p>
+          <p><i class="bi bi-envelope-fill"></i><span><a href="mailto:hello@kadesh.digital">hello@kadesh.digital</a></span></p>
+          <p><i class="bi bi-instagram"></i><span><a href="https://ig.me/m/kadeshdigital" target="_blank" rel="noopener noreferrer">DM on Instagram</a></span></p>
+          <p><i class="bi bi-whatsapp"></i><span><a href="https://wa.me/2347032716640" target="_blank" rel="noopener noreferrer">DM on WhatsApp</a></span></p>
+          <p><i class="bi bi-clock-fill"></i><span>Mon - Fri: 9:00 AM - 6:00 PM</span></p>
         </div>
       </div>
     </div>
