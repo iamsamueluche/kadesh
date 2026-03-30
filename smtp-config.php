@@ -7,15 +7,14 @@ return [
     'host' => 'smtp.hostinger.com',
     'port' => 465,
     'encryption' => 'ssl', // ssl, tls, or none
-    'username' => 'hello@kadesh.digital',
+    'username' => 'hello@kadeshdigital.com',
     'password' => 'PeaceKadesh2025!',
 
     // Mail envelope/from + recipient
-    'from_email' => 'hello@kadesh.digital',
+    'from_email' => 'hello@kadeshdigital.com',
     'from_name' => 'KADESH Digital',
-    'to_email' => 'hello@kadesh.digital',
+    'to_email' => 'hello@kadeshdigital.com',
 
     // Socket timeout in seconds
     'timeout' => 20,
 ];
-

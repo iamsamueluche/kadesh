@@ -795,7 +795,7 @@ function loadPartials() {
         <h5>Contact Us</h5>
         <div class="footer-contact">
           <p><i class="bi bi-geo-alt-fill"></i><span>Number 9, Irebawa Street, Ogba<br>Lagos, Nigeria</span></p>
-          <p><i class="bi bi-envelope-fill"></i><span><a href="mailto:hello@kadesh.digital">hello@kadesh.digital</a></span></p>
+          <p><i class="bi bi-envelope-fill"></i><span><a href="mailto:hello@kadeshdigital.com">hello@kadeshdigital.com</a></span></p>
           <p><i class="bi bi-instagram"></i><span><a href="https://ig.me/m/kadeshdigital" target="_blank" rel="noopener noreferrer">DM on Instagram</a></span></p>
           <p><i class="bi bi-whatsapp"></i><span><a href="https://wa.me/2347032716640" target="_blank" rel="noopener noreferrer">DM on WhatsApp</a></span></p>
           <p><i class="bi bi-clock-fill"></i><span>Mon - Fri: 9:00 AM - 6:00 PM</span></p>
