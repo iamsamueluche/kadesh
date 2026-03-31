@@ -717,8 +717,18 @@ img {
 .service-detail-icon {
   width: 72px !important;
   height: 72px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  flex-shrink: 0;
   background: linear-gradient(135deg, var(--color-primary-lighter), rgba(251, 191, 36, 0.22)) !important;
   border-radius: 20px !important;
+}
+
+.service-detail-icon i {
+  display: block;
+  line-height: 1;
 }
 
 /* Project Card */
@@ -3243,6 +3253,210 @@ img {
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   margin-bottom: 0;
+}
+
+.process-flow-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.process-flow-section .container-custom {
+  position: relative;
+  z-index: 1;
+}
+
+.process-flow-glow {
+  display: none;
+}
+
+.process-flow-glow-left {
+  display: none;
+}
+
+.process-flow-glow-right {
+  display: none;
+}
+
+.process-flow-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 84px 84px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0) 78%);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.process-flow-row {
+  position: relative;
+}
+
+.process-flow-row > div {
+  position: relative;
+}
+
+.process-step-flow {
+  position: relative;
+  min-height: 100%;
+  padding: 34px 28px 30px;
+  text-align: left;
+  border-radius: 28px;
+  border: 1px solid rgba(107, 33, 168, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 245, 255, 0.96) 100%);
+  box-shadow:
+    0 18px 38px rgba(38, 25, 59, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.process-step-flow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.14), transparent 34%, transparent 72%, rgba(107, 33, 168, 0.08));
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.process-step-flow::after {
+  content: "";
+  position: absolute;
+  top: 92px;
+  left: calc(100% + 12px);
+  width: calc(100% - 24px);
+  height: 2px;
+  background: linear-gradient(90deg, rgba(107, 33, 168, 0.28) 0%, rgba(251, 191, 36, 0.92) 48%, rgba(107, 33, 168, 0.28) 100%);
+  box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.08);
+  z-index: 0;
+}
+
+.process-flow-row > div:last-child .process-step-flow::after {
+  display: none;
+}
+
+.process-flow-row > div:not(:last-child) .process-step-flow::before,
+.process-flow-row > div:not(:last-child) .process-step-flow::after {
+  will-change: transform, opacity;
+}
+
+.process-flow-row > div:not(:last-child) .process-step-flow::after {
+  animation: processConnectorPulse 4.8s ease-in-out infinite;
+}
+
+.process-step-flow .step-number {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  margin: 0 0 22px;
+  background: linear-gradient(135deg, rgba(107, 33, 168, 0.14), rgba(251, 191, 36, 0.3));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 14px 30px rgba(107, 33, 168, 0.12);
+  transition: transform var(--transition-base);
+}
+
+.process-step-flow .step-number::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(107, 33, 168, 0.16);
+  opacity: 0.7;
+}
+
+.process-step-flow h4,
+.process-step-flow p,
+.process-step-flow .step-number {
+  position: relative;
+  z-index: 1;
+}
+
+.process-step-flow h4 {
+  margin-bottom: 14px;
+  font-size: 1.2rem;
+}
+
+.process-step-flow p {
+  line-height: 1.75;
+}
+
+.process-flow-row > div:nth-child(1) .process-step-flow {
+  animation: processCardFloat 7s ease-in-out infinite;
+}
+
+.process-flow-row > div:nth-child(2) .process-step-flow {
+  animation: processCardFloat 7s ease-in-out infinite 0.8s;
+}
+
+.process-flow-row > div:nth-child(3) .process-step-flow {
+  animation: processCardFloat 7s ease-in-out infinite 1.6s;
+}
+
+.process-flow-row > div:nth-child(4) .process-step-flow {
+  animation: processCardFloat 7s ease-in-out infinite 2.4s;
+}
+
+.process-step-flow:hover {
+  animation-play-state: paused;
+  transform: translateY(-10px) scale(1.01);
+  border-color: rgba(251, 191, 36, 0.4);
+  box-shadow:
+    0 28px 48px rgba(38, 25, 59, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.process-step-flow:hover .step-number {
+  transform: scale(1.06);
+}
+
+.process-step-flow:hover::after {
+  box-shadow: 0 0 0 12px rgba(251, 191, 36, 0.12);
+}
+
+@keyframes processCardFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes processConnectorPulse {
+  0% {
+    opacity: 0.52;
+    transform: scaleX(0.96);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.04);
+  }
+  100% {
+    opacity: 0.52;
+    transform: scaleX(0.96);
+  }
+}
+
+@media (max-width: 991.98px) {
+  .process-step-flow::after {
+    display: none;
+  }
+
+  .process-step-flow .step-number {
+    margin: 0 auto 20px;
+  }
 }
 
 /* ========================================
