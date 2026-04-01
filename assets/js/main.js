@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
   initHeroMotion();
   initScrollReveal();
   initProjectFilter();
-  initProjectCaseStudyModal();
   initFAQAccordion();
   initSuccessSlider();
   initSmoothScroll();
@@ -247,104 +246,61 @@ function initProjectCaseStudyModal() {
   if (typeof bootstrap === 'undefined' || !bootstrap.Modal) return;
 
   const caseStudyData = {
-    techstyle: {
+    seamlessvisa: {
       client: 'SeamlessVisa',
-      name: 'SeamlessVisa Digital Presence Growth',
-      image: 'assets/img/project-fintech.jpg',
-      imageAlt: 'SeamlessVisa digital marketing campaign preview',
-      tags: ['SEO', 'Social Media', 'Lead Generation'],
-      summary: 'How we helped SeamlessVisa improve their digital presence with SEO and social media.',
-      challenge: 'The brand needed stronger online visibility, more consistent audience growth, and a clearer path from digital attention to qualified inquiries.',
-      strategy: 'We strengthened their search presence, refined their social media positioning, and built a content-led system that improved discoverability, engagement, and inquiry flow.',
-      results: ['150% increase in followers', 'A consistent lead funnel', 'Increased brand recognition within their target market']
+      name: 'How We Boosted SeamlessVisa’s Digital Presence Using SEO & Social Media Strategies',
+      image: 'assets/img/Clients/SeamlessVisa.png',
+      imageAlt: 'SeamlessVisa project visual',
+      tags: ['Social Media Management', 'Content Creation', 'Video Editing', 'Blog Posts'],
+      summary: '<p>SeamlessVisa is a U.S.-based immigration tech startup focused on helping Africans navigate study abroad and visa processes seamlessly. As a new entrant expanding into the African market, the brand needed to establish credibility, educate its audience, and position itself as a trustworthy and tech-driven migration solution.</p><p>At the time of engagement, SeamlessVisa was in its early growth stage and required structured social media marketing support to build awareness, communicate its services clearly, and attract qualified leads in a highly competitive immigration space.</p><p>Kadesh Digital was brought in to develop and manage a cohesive brand strategy that would strengthen the brand&rsquo;s online presence and create a sustainable visibility system.</p>',
+      challenge: '<p>Breaking into the immigration industry, especially within the African market comes with significant challenges:</p><ul><li>High competition from established migration agencies</li><li>Low initial brand awareness</li><li>Trust barriers in the immigration and study abroad space</li><li>Inconsistent online messaging</li><li>Limited educational content explaining services clearly</li><li>No structured lead-nurturing content system</li></ul><p>SeamlessVisa needed more than just posts. They needed authority positioning, audience education, and a consistent digital strategy that would differentiate them from traditional immigration agencies.</p><p>The core challenge was clear:<br>How do we build trust and visibility for a new immigration tech brand in a saturated market?</p>',
+      strategy: '<p>We developed a strategy-led digital execution plan centered around three key pillars:</p><p><strong>1. Brand Positioning &amp; Messaging Clarity</strong><br>We refined the brand&rsquo;s messaging to clearly communicate:</p><ul><li>Their tech-driven approach</li><li>Their service offerings</li><li>Their unique value proposition</li><li>Their credibility and expertise</li></ul><p>This ensured consistency across all digital touchpoints.</p><p><strong>2. Structured Social Media Strategy</strong><br>We implemented a comprehensive content plan focused on:</p><ul><li>Educational content explaining visa processes</li><li>Study abroad insights and updates (Scholarships and opportunities in several countries)</li><li>Service-focused storytelling</li><li>Industry trends and myth-busting posts</li><li>Value-driven captions optimized for engagement</li></ul><p>We also introduced consistent posting schedules and audience engagement management to strengthen brand trust.</p><p><strong>3. SEO-Driven Blog Content &amp; Authority Building</strong><br>To improve discoverability and strengthen long-term digital visibility, we developed search-optimized blog content addressing:</p><ul><li>Visa application processes</li><li>Study abroad requirements</li><li>Immigration-related FAQs</li><li>Country-specific guidance</li></ul><p>This supported organic traffic growth while positioning SeamlessVisa as an educational authority in the migration space.</p><p><strong>4. Community &amp; Campaign Initiatives</strong><br>Beyond static content, we supported:</p><ul><li>Webinar promotions</li><li>Community-building initiatives</li><li>Engagement-driven campaigns</li><li>Structured content series</li></ul><p>This helped create recurring visibility moments rather than one-off posts.</p>',
+      results: '<p>Within months of structured digital execution, SeamlessVisa achieved:</p><ul><li>2,000+ Organic Followers Across Platforms</li><li>300,000+ Total Content Views</li><li>Improved Brand Recognition</li><li>A Structured Lead Funnel</li><li>Increased Inquiries from Target Audiences</li></ul><p>More importantly, the brand transitioned from being &ldquo;a new player&rdquo; to becoming a recognized within its target market.</p><p>Their digital presence became:</p><ul><li>More authoritative</li><li>More educational</li><li>More consistent</li><li>More conversion-focused</li></ul>',
+      conclusion: '<p>By combining strategic messaging, structured social media management, and SEO-driven content, we helped SeamlessVisa build a strong digital foundation in a competitive immigration industry.</p><p>Rather than relying on inconsistent posts or short-term campaigns, the brand now operates with a structured digital presence designed to educate, build trust, and generate sustainable leads.</p><p>This project reinforces what we believe at Kadesh Digital:<br>Growth doesn&rsquo;t come from doing more.<br>It comes from doing the right things consistently and strategically.</p>'
     },
-    greenlife: {
-      client: 'GreenLife Organics',
-      name: 'GreenLife Organics Brand Launch',
-      image: 'assets/img/service-brand.jpg',
-      imageAlt: 'GreenLife Organics brand campaign visuals',
-      tags: ['Branding', 'Social Media', 'Content'],
-      summary: 'Full brand identity development and integrated marketing campaign for organic food startup.',
-      challenge: 'GreenLife entered a crowded health-food market without strong brand awareness or a distinct market position.',
-      strategy: 'We developed a brand identity system, voice guidelines, social content pillars, and launch campaigns across social and influencer channels.',
-      results: ['120K+ launch campaign reach in first 60 days', '42% increase in social engagement rate', '4.2x return on launch media spend']
+    peantouch: {
+      client: 'Pean Touch Cleaning Services',
+      name: 'How We Strengthened Pean Touch Cleaning Services’ Brand Identity & Online Visibility Through Strategic Branding and PPC Advertising',
+      image: 'assets/img/Clients/Pean Touch Cleaning Services.png',
+      imageAlt: 'Pean Touch Cleaning Services project visual',
+      tags: ['Branding', 'Social Media Management', 'Content Creation', 'PPC Advertising'],
+      summary: 'We helped Pean Touch Cleaning Services build a stronger identity and more visible online presence through coordinated branding, content, and paid campaigns.',
+      challenge: 'The business needed a clearer brand identity and stronger online visibility to compete more effectively and attract the right audience.',
+      strategy: 'We aligned branding, social media management, content creation, and PPC advertising into a focused visibility and positioning system.',
+      results: ['Stronger brand consistency', 'Improved online visibility', 'More targeted audience reach']
     },
-    fintech: {
-      client: 'FinTech Solutions',
-      name: 'FinTech Solutions PPC Campaign',
-      image: 'assets/img/project-fintech.jpg',
-      imageAlt: 'FinTech Solutions PPC performance dashboard',
-      tags: ['PPC', 'Analytics', 'Conversion'],
-      summary: 'Strategic PPC and conversion optimization campaign for financial technology platform.',
-      challenge: 'Paid acquisition costs were rising while lead quality was inconsistent across campaign types.',
-      strategy: 'We restructured ad accounts, refined audience targeting, built intent-based landing pages, and rolled out continuous A/B testing on messaging and creatives.',
-      results: ['47% reduction in cost per qualified lead', '2.8x increase in lead volume', '31% lift in landing page conversion rate']
+    brainfoods: {
+      client: 'BrainFoods Limited',
+      name: 'How We Helped BrainFoods Limited Build Strategic Clarity & Professional Brand Positioning',
+      image: 'assets/img/Clients/BrainFoods.png',
+      imageAlt: 'BrainFoods Limited project visual',
+      tags: ['Business Plan', 'Marketing Strategy', 'Portfolio Design'],
+      summary: 'We worked with BrainFoods Limited to clarify its business direction, strengthen its strategic positioning, and present the brand more professionally.',
+      challenge: 'The business needed more strategic clarity and a stronger professional presentation to support growth conversations and brand perception.',
+      strategy: 'We developed a business plan, refined the marketing strategy, and created a more polished portfolio presentation to support positioning and communication.',
+      results: ['Clearer business direction', 'Improved professional presentation', 'Stronger strategic brand positioning']
     },
-    wellness: {
-      client: 'Wellness Hub',
-      name: 'Wellness Hub Social Strategy',
-      image: 'assets/img/project-wellness.jpg',
-      imageAlt: 'Wellness Hub social media campaign showcase',
-      tags: ['Social Media', 'Influencer', 'Content'],
-      summary: 'Comprehensive social media strategy and influencer marketing campaign for wellness brand.',
-      challenge: 'The brand needed consistent social growth and trusted advocacy to compete in a saturated wellness space.',
-      strategy: 'We designed a content calendar, partnered with niche influencers, and introduced a UGC-first creative model for stronger community trust.',
-      results: ['215% increase in monthly social reach', '89% growth in profile-driven traffic', '3.1x campaign ROI from influencer collaborations']
+    ihcpro: {
+      client: 'IHcPro',
+      name: 'How We Increased IHcPro’s Visibility Through Social Media Marketing & Targeted PPC Campaigns',
+      image: 'assets/img/Clients/IHcPro.png',
+      imageAlt: 'IHcPro project visual',
+      tags: ['Social Media Marketing', 'PPC Advertising'],
+      summary: 'We helped IHcPro increase brand visibility through a focused mix of social media marketing and targeted paid campaigns.',
+      challenge: 'IHcPro needed to improve reach and visibility while ensuring its promotional efforts were focused on the right audience segments.',
+      strategy: 'We paired ongoing social media marketing with targeted PPC campaigns to strengthen awareness and reach more qualified prospects.',
+      results: ['Higher brand visibility', 'Better audience targeting', 'Stronger campaign reach']
     },
-    urbaneats: {
-      client: 'Urban Eats',
-      name: 'Urban Eats Restaurant Marketing',
-      image: 'assets/img/project-restaurant.jpg',
-      imageAlt: 'Urban Eats restaurant digital campaign highlights',
-      tags: ['Local SEO', 'Content', 'Reputation'],
-      summary: 'Local SEO, content marketing, and reputation management for restaurant chain.',
-      challenge: 'Multiple locations had poor local search visibility and inconsistent review management.',
-      strategy: 'We optimized location pages, improved local listings, deployed neighborhood-focused content, and implemented a review response workflow.',
-      results: ['Top 3 local pack rankings for priority keywords', '63% growth in map-driven visits', '1.2-star average rating improvement']
-    },
-    proptech: {
-      client: 'PropTech Realty',
-      name: 'PropTech Realty Digital Presence',
+    seymonds: {
+      client: 'Seymonds Apartment',
+      name: 'How We Increased Seymonds Apartment Bookings Through Strategic Video Marketing & Lifestyle Content',
       image: 'assets/img/project-realestate.jpg',
-      imageAlt: 'PropTech Realty website and property content preview',
-      tags: ['SEO', 'Content', 'Web Design'],
-      summary: 'SEO optimization and content strategy for real estate technology platform.',
-      challenge: 'The platform had strong product value but weak search visibility in high-intent property technology keywords.',
-      strategy: 'We executed technical SEO fixes, built a keyword-targeted content hub, and launched authority-building link acquisition campaigns.',
-      results: ['176% increase in qualified organic sessions', '54 new first-page keyword rankings', '2.4x increase in demo requests']
-    },
-    luxe: {
-      client: 'Luxe Beauty',
-      name: 'Luxe Beauty Brand Refresh',
-      image: 'assets/img/service-email.jpg',
-      imageAlt: 'Luxe Beauty brand refresh digital assets',
-      tags: ['Branding', 'E-Commerce', 'Social'],
-      summary: 'Complete brand refresh and digital marketing overhaul for luxury beauty brand.',
-      challenge: 'The legacy brand identity no longer resonated with younger premium beauty customers.',
-      strategy: 'We refreshed visual identity, refined brand messaging, redesigned campaign landing pages, and launched omnichannel paid and organic campaigns.',
-      results: ['38% increase in returning customer rate', '3.6x growth in campaign-attributed revenue', '67% increase in branded search volume']
-    },
-    edutech: {
-      client: 'EduTech Platform',
-      name: 'EduTech Platform Growth',
-      image: 'assets/img/project-edutech.jpg',
-      imageAlt: 'EduTech Platform growth campaign analytics',
-      tags: ['Growth Marketing', 'Email', 'PPC'],
-      summary: 'Growth marketing strategy for online education platform including paid ads and email campaigns.',
-      challenge: 'Course signups plateaued due to weak funnel follow-up and underperforming paid traffic quality.',
-      strategy: 'We built a full-funnel acquisition model, optimized campaign segmentation, and launched automated nurture sequences for abandoned and warm leads.',
-      results: ['141% increase in paid signup volume', '29% decrease in customer acquisition cost', '44% increase in trial-to-paid conversion']
-    },
-    activelife: {
-      client: 'ActiveLife Fitness',
-      name: 'ActiveLife Fitness Campaign',
-      image: 'assets/img/project-fitness.jpg',
-      imageAlt: 'ActiveLife Fitness social and content campaign creative',
-      tags: ['Social Media', 'Content', 'Video'],
-      summary: 'Integrated social media and content marketing campaign for fitness center chain.',
-      challenge: 'The chain needed stronger seasonal campaign performance and consistent brand engagement across locations.',
-      strategy: 'We aligned local and national creative assets, launched community challenges, and supported campaigns with short-form video and paid retargeting.',
-      results: ['82% increase in campaign engagement', '27% increase in membership inquiries', '3.9x return on paid social campaigns']
+      imageAlt: 'Seymonds Apartment project visual',
+      tags: ['Content Creation', 'Videography'],
+      summary: 'We used lifestyle-focused content and video marketing to help Seymonds Apartment present its offering more attractively and drive more booking interest.',
+      challenge: 'The apartment brand needed more compelling visual storytelling to stand out and convert attention into booking intent.',
+      strategy: 'We developed strategic video marketing and lifestyle content that highlighted the apartment experience in a more aspirational and conversion-friendly way.',
+      results: ['Improved visual appeal online', 'Stronger booking interest', 'More engaging property marketing content']
     }
   };
 
@@ -357,6 +313,7 @@ function initProjectCaseStudyModal() {
   const modalChallenge = document.getElementById('modalProjectChallenge');
   const modalStrategy = document.getElementById('modalProjectStrategy');
   const modalResults = document.getElementById('modalProjectResults');
+  const modalConclusion = document.getElementById('modalProjectConclusion');
 
   function renderCaseStudy(projectId) {
     const details = caseStudyData[projectId];
@@ -367,12 +324,15 @@ function initProjectCaseStudyModal() {
     modalImage.src = details.image;
     modalImage.alt = details.imageAlt;
     modalTags.innerHTML = details.tags.map(tag => '<span class="tag">' + tag + '</span>').join('');
-    modalSummary.textContent = details.summary;
-    modalChallenge.textContent = details.challenge;
-    modalStrategy.textContent = details.strategy;
-    modalResults.innerHTML = details.results
-      .map(item => '<li><i class="bi bi-check-circle-fill"></i> ' + item + '</li>')
-      .join('');
+    modalSummary.innerHTML = details.summary;
+    modalChallenge.innerHTML = details.challenge;
+    modalStrategy.innerHTML = details.strategy;
+    modalResults.innerHTML = Array.isArray(details.results)
+      ? details.results
+          .map(item => '<li><i class="bi bi-check-circle-fill"></i> ' + item + '</li>')
+          .join('')
+      : details.results;
+    modalConclusion.innerHTML = details.conclusion || '';
   }
 
   triggerLinks.forEach(link => {
@@ -738,6 +698,7 @@ function loadPartials() {
       <a href="services.html" class="nav-link">Services</a>
       <a href="projects.html" class="nav-link">Projects</a>
       <a href="careers.html" class="nav-link">Careers</a>
+      <a href="resources.html" class="nav-link">Resources</a>
       <a href="faq.html" class="nav-link">FAQ</a>
       <a href="contact.html" class="nav-link">Contact Us</a>
       <a href="https://calendly.com/kadeshdigital/30min" class="btn btn-primary btn-sm d-lg-none" target="_blank">Book a Free Discovery Call</a>
@@ -775,6 +736,7 @@ function loadPartials() {
           <li><a href="services.html"><i class="bi bi-chevron-right"></i> Services</a></li>
           <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Projects</a></li>
           <li><a href="careers.html"><i class="bi bi-chevron-right"></i> Careers</a></li>
+          <li><a href="resources.html"><i class="bi bi-chevron-right"></i> Resources</a></li>
         </ul>
       </div>
       <div class="col-lg-3 col-md-6">
