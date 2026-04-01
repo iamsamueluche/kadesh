@@ -294,8 +294,8 @@ function initProjectCaseStudyModal() {
     seymonds: {
       client: 'Seymonds Apartment',
       name: 'How We Increased Seymonds Apartment Bookings Through Strategic Video Marketing & Lifestyle Content',
-      image: 'assets/img/project-realestate.jpg',
-      imageAlt: 'Seymonds Apartment project visual',
+      image: 'assets/img/Clients/Seymonds.jpg',
+      imageAlt: 'Seymonds Apartment logo',
       tags: ['Content Creation', 'Videography'],
       summary: 'We used lifestyle-focused content and video marketing to help Seymonds Apartment present its offering more attractively and drive more booking interest.',
       challenge: 'The apartment brand needed more compelling visual storytelling to stand out and convert attention into booking intent.',
