@@ -735,6 +735,7 @@ function loadPartials() {
           <li><a href="about.html"><i class="bi bi-chevron-right"></i> About Us</a></li>
           <li><a href="services.html"><i class="bi bi-chevron-right"></i> Services</a></li>
           <li><a href="projects.html"><i class="bi bi-chevron-right"></i> Projects</a></li>
+          <li><a href="faq.html"><i class="bi bi-chevron-right"></i> FAQ</a></li>
           <li><a href="careers.html"><i class="bi bi-chevron-right"></i> Careers</a></li>
           <li><a href="resources.html"><i class="bi bi-chevron-right"></i> Resources</a></li>
         </ul>
