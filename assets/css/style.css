@@ -7516,6 +7516,15 @@ img {
     inset: 24% -10% 10% 30%;
   }
 
+  .careers-hero-title {
+    max-width: 12ch;
+    margin-left: auto;
+    margin-right: auto;
+    white-space: normal !important;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
   .careers-hero-signals {
     gap: 8px;
   }
@@ -7523,6 +7532,7 @@ img {
   .careers-hero-signals span {
     padding: 8px 10px;
     font-size: 10px;
+    animation: none;
   }
 
   .careers-copy h2,
