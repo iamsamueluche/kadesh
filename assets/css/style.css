@@ -6072,6 +6072,10 @@ img {
   margin-bottom: 8px;
 }
 
+.success-story-label-compact {
+  font-size: 15px;
+}
+
 .success-story-title {
   color: #51228f;
   font-size: 40px;
@@ -6082,6 +6086,11 @@ img {
 
 .success-story-title-compact {
   font-size: 28px;
+  line-height: 1.2;
+}
+
+.success-story-title-compact-pean {
+  font-size: 26px;
   line-height: 1.2;
 }
 
@@ -7612,9 +7621,17 @@ img {
     margin-bottom: 8px;
   }
 
+  .success-story-label-compact {
+    font-size: 13px;
+  }
+
   .success-story-title {
     font-size: 26px;
     margin-bottom: 16px;
+  }
+
+  .success-story-title-compact-pean {
+    font-size: 23px;
   }
 
   .success-story-content p {
