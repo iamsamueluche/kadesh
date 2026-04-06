@@ -512,19 +512,83 @@ function initServiceSpotlights() {
  * Highlights the active quick nav item on the services page
  */
 function initServiceQuickNav() {
-  const quickLinks = document.querySelectorAll('.services-quick-nav a');
+  const quickNav = document.querySelector('.services-quick-nav');
+  const quickLinks = quickNav ? Array.from(quickNav.querySelectorAll('a')) : [];
   const sections = document.querySelectorAll('.service-detail-section');
 
-  if (quickLinks.length === 0 || sections.length === 0) return;
+  if (!quickNav || quickLinks.length === 0 || sections.length === 0) return;
+
+  const mobileViewport = window.matchMedia('(max-width: 767px)');
+  let autoAdvanceTimer = null;
+  let resumeTimer = null;
+  let currentIndex = 0;
+
+  function centerLink(link, behavior = 'smooth') {
+    if (!mobileViewport.matches || !link) return;
+
+    const navRect = quickNav.getBoundingClientRect();
+    const linkRect = link.getBoundingClientRect();
+    const delta = (linkRect.left - navRect.left) - (navRect.width - linkRect.width) / 2;
+
+    quickNav.scrollTo({
+      left: quickNav.scrollLeft + delta,
+      behavior
+    });
+  }
+
+  function setActiveLink(index, behavior = 'smooth') {
+    currentIndex = index;
+    quickLinks.forEach((link, linkIndex) => {
+      link.classList.toggle('active', linkIndex === index);
+    });
+
+    centerLink(quickLinks[index], behavior);
+  }
+
+  function stopAutoAdvance() {
+    if (autoAdvanceTimer) {
+      window.clearInterval(autoAdvanceTimer);
+      autoAdvanceTimer = null;
+    }
+  }
+
+  function scheduleResume() {
+    if (resumeTimer) {
+      window.clearTimeout(resumeTimer);
+    }
+
+    resumeTimer = window.setTimeout(() => {
+      startAutoAdvance();
+    }, 4500);
+  }
+
+  function pauseAutoAdvance() {
+    stopAutoAdvance();
+    scheduleResume();
+  }
+
+  function startAutoAdvance() {
+    stopAutoAdvance();
+
+    if (!mobileViewport.matches || quickLinks.length < 2) return;
+
+    autoAdvanceTimer = window.setInterval(() => {
+      const nextIndex = (currentIndex + 1) % quickLinks.length;
+      setActiveLink(nextIndex);
+    }, 2800);
+  }
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
 
-      quickLinks.forEach(link => {
-        const isActive = link.getAttribute('href') === '#' + entry.target.id;
-        link.classList.toggle('active', isActive);
+      const activeIndex = quickLinks.findIndex(link => {
+        return link.getAttribute('href') === '#' + entry.target.id;
       });
+
+      if (activeIndex !== -1) {
+        setActiveLink(activeIndex);
+      }
     });
   }, {
     threshold: 0.45,
@@ -532,6 +596,41 @@ function initServiceQuickNav() {
   });
 
   sections.forEach(section => observer.observe(section));
+
+  quickLinks.forEach((link, index) => {
+    link.addEventListener('click', () => {
+      setActiveLink(index);
+      pauseAutoAdvance();
+    });
+  });
+
+  ['pointerdown', 'touchstart', 'mouseenter', 'focusin'].forEach(eventName => {
+    quickNav.addEventListener(eventName, pauseAutoAdvance, { passive: true });
+  });
+
+  ['mouseleave', 'focusout'].forEach(eventName => {
+    quickNav.addEventListener(eventName, scheduleResume);
+  });
+
+  const initialActiveIndex = quickLinks.findIndex(link => link.classList.contains('active'));
+  setActiveLink(initialActiveIndex >= 0 ? initialActiveIndex : 0, 'auto');
+  startAutoAdvance();
+
+  mobileViewport.addEventListener('change', event => {
+    stopAutoAdvance();
+
+    if (resumeTimer) {
+      window.clearTimeout(resumeTimer);
+      resumeTimer = null;
+    }
+
+    if (event.matches) {
+      setActiveLink(currentIndex, 'auto');
+      startAutoAdvance();
+    } else {
+      quickNav.scrollTo({ left: 0, behavior: 'smooth' });
+    }
+  });
 }
 
 /**
